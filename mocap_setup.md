@@ -5,3 +5,5 @@ The Rapsberry Pi (RPi) will serve as onboard computer to receive the position da
 Verify your installation by connecting to the PX4 over USB, in QGroundControl go to the Analyze Tools and the MAVLINK inspector. You should be able to see that the PX4 receives the local position in NED (north-east-down coordinates). Now, you can do another flight test in position mode. It may also be useful before doing another flight test to install the Xbee so that you will be able to communicate with the PX4 without USB. Connect the two Xbees using [XCTU](https://www.digi.com/products/embedded-systems/digi-xbee/digi-xbee-tools/xctu), then connect the onboard Xbee to the other telemetry port on the PX4. Connect the Xbee on the ground to your computer. You should now be able to access the PX4 from QGroundControl without a wired connection. 
 
 Next, we will start [flight controlled over our reference generator](reference_gen_setup.md).
+
+Once you have the gripper interface running too, you can put both commands to execute the programs into `/etc/rc.local` to run them automatically on startup. 
