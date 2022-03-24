@@ -1,3 +1,7 @@
 # Setting up the Raspberry Pi and Motion Capture
 
-The Rapsberry Pi (RPi) will serve as onboard computer to receive the position data from the motion capture and gripper commands. 
+The Rapsberry Pi (RPi) will serve as onboard computer to receive the position data from the motion capture and gripper commands. The motion capture data is critical to stabilize the system and provide local position data. Install an operating system of your choice on the RPi (we use Raspbian Lite Buster). Install the [motion capture publisher](https://github.com/raptor-ethz/mocap_px4_publisher) on the RPi and connect it to the SparkFun STDI board. Connect the STDI board to a telemetry port on the PX4. You will need to configure the serial port in the motion capture code and once you've built the program, enter the IP of the Vicon system as argument when running the program. 
+
+Verify your installation by connecting to the PX4 over USB, in QGroundControl go to the Analyze Tools and the MAVLINK inspector. You should be able to see that the PX4 receives the local position in NED (north-east-down coordinates). Now, you can do another flight test in position mode. It may also be useful before doing another flight test to install the Xbee so that you will be able to communicate with the PX4 without USB. Connect the two Xbees using [XCTU](https://www.digi.com/products/embedded-systems/digi-xbee/digi-xbee-tools/xctu), then connect the onboard Xbee to the other telemetry port on the PX4. Connect the Xbee on the ground to your computer. You should now be able to access the PX4 from QGroundControl without a wired connection. 
+
+Next, we will start [flight controlled over our reference generator](reference_gen_setup.md).
