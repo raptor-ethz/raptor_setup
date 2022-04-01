@@ -12,3 +12,5 @@ So, a little overview:
 You can verify your setup by running the gripper test program in the reference generator repository. 
 
 With the gripper correctly installed, you will now be able to write applications in the reference generator that utilise the gripper. This allows for fast, dynamic pickup of objects which you can creatively use at your will.
+
+At this point, you've completed most of the setup. You may also want to look into tuning the PID parameters of the PX4 to suit your setup best. If at this point there are any questions remaining, feel free to open an issue in this repository and contact us.
