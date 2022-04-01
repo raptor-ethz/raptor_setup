@@ -2,6 +2,8 @@
 
 Welcome to the RAPTOR setup repository! Here, you will be able to find a complete overview of our system and detailed instructions on how to replicate our results. We will provide a detailed overview of the necessary components to get our system up and running and replicate our results.
 
+![RAPTOR flying](images/DSC07535.jpg)
+
 # Components
 
 First, you will need a number of components. We use off-the-shelf components wherever possible and use custom designs if we can't find an off-the-shelf solution. These custom designs will be made available separately. For our off-the-shelf components, we have the following items:
