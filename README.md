@@ -44,10 +44,8 @@ We have also taken the step of labelling all switches on the remote, particularl
 
 At this point, you should have a very simple drone kit that is fully assembled and a remote controller that connects to your flight controller. Go and undertake a flight test in a safe place. Check that your throttle is at zero, arm the drone, check that your kill switch works and finally, you can take off. Since the drone is only flying with the IMU data from the PixHawk in manual mode, it will be rather unstable with a lot of drift. However, this will be fixed once we [connect the Raspberry Pi](mocap_setup.md) with motion capture.
 
-
-
-
-
+### Software Setup
+To Set up our custom library, head over to the software_setup.md file.
 
 
 
