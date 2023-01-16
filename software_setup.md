@@ -40,10 +40,12 @@ RAPTOR
 ```
 
 ## Clone PX4-Autopilot
-Navigate your terminal into the src/ folder and clone the PX4-Autopilot repository
+Navigate your terminal into the src/ folder and clone the PX4-Autopilot repository and its submodules.
 ```bash
   cd /path/to/RAPTOR/src
   git clone https://github.com/raptor-ethz/PX4-Autopilot
+  git submodule init
+  git submodule update
   ```
 
 Run the provided script, to setup the PX4_Autopilot:
