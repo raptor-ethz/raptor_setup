@@ -40,12 +40,10 @@ RAPTOR
 ```
 
 ## Clone PX4-Autopilot
-Navigate your terminal into the src/ folder and clone the PX4-Autopilot repository and its submodules.
+Navigate your terminal into the src/ folder and clone the PX4-Autopilot repository.
 ```bash
   cd /path/to/RAPTOR/src
   git clone https://github.com/raptor-ethz/PX4-Autopilot
-  git submodule init
-  git submodule update
   ```
 
 Run the provided script, to setup the PX4_Autopilot:
@@ -80,10 +78,11 @@ Navigate your terminal into the "src" folder and clone the raptor repository.
 
 
 # Run a simulation
-To run a simulation of our drone you'll need to run three terminals. But first you need to build it.
+To run a simulation of our drone you'll need to run three terminals. But first you need to build the programs.
 ```bash
 cd /path/to/RAPTOR
 colcon build
+. install/setup.bash
 ```
 
 Your folder structure should now look like this
@@ -101,25 +100,25 @@ RAPTOR
 Open a terminal and invoke the respective makefile within the PX4 source code repository:
 ```bash
 cd /path/to/PX4-Autopilot
-make px4_sitl gazebo
+make px4_sitl gazebo-classic
 ```
 
 To start a simulator with our RAPTOR drone use:
 ```bash
 cd /path/to/PX4-Autopilot
-make px4_sitl gazebo_raptor
+make px4_sitl gazebo-classic_raptor
 ```
 
 To start a simulator within the LEO C6 world use:
 ```bash
 cd /path/to/PX4-Autopilot
-make px4_sitl gazebo__leoc6
+make px4_sitl gazebo-classic__leoc6
 ```
 
 To start a simulator with our RAPTOR drone within the LEO C6 world use:
 ```bash
 cd /path/to/PX4-Autopilot
-make px4_sitl gazebo_raptor__leoc6
+make px4_sitl gazebo-classic_raptor__leoc6
 make 
 ```
 
