@@ -135,7 +135,7 @@ udp://:14540 is used to connect the mavsdk interface with the gazebo simulator.
 cd /path/to/RAPTOR
 source /opt/ros/humble/setup.bash
 . install/local_setup.bash
-ros2 run quad_interface mav_interface udp://:14540
+ros2 run quad_control quad_control udp://:14540
 ```
 
 ## Start reference generator
@@ -144,11 +144,11 @@ Open a terminal, source ROS2 and run the reference generator.
 cd /path/to/RAPTOR
 source /opt/ros/humble/setup.bash
 . install/local_setup.bash
-ros2 run quad_interface reference_generator
+ros2 run quad_control reference_generator
 ```
 
 In the gazebo environment you should now see the drone doing whatever you specified in the main function of the reference generator.
 You can find the file in
 ```bash
-cd /path/to/RAPTOR/src/raptor/src/quad_interface/src
+cd /path/to/RAPTOR/src/raptor/src/quad_control/src
 ```
