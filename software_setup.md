@@ -68,13 +68,6 @@ Some dependencies might not be properly installed by the ubunt.sh script above. 
   ```
   Note: gstreamer1.0-dev can sometimes not be located but looks like it's not needed anyway 
 
-
-## Clone Raptor
-Navigate your terminal into the "src" folder and clone the raptor repository.
-```bash
-    cd /path/to/RAPTOR/src
-    git clone https://github.com/raptor-ethz/raptor
-  ```
 Next you'll need to change the active branch to RAPTOR and create a git tag.
 ```bash
   cd PX4-Autopilot
@@ -82,23 +75,19 @@ Next you'll need to change the active branch to RAPTOR and create a git tag.
   git tag v1.9.1
 ```
 
-Download the required submodules by running the simulation for a first time. This will take a few minutes, because it has to download the submodules as well.
+## Clone Raptor
+Navigate your terminal into the "src" folder and clone the raptor repository.
+```bash
+    cd /path/to/RAPTOR/src
+    git clone https://github.com/raptor-ethz/raptor
+  ```
 
-```
-make px4_sitl gazebo
-```
-
-Then you need to change the branch of the gazebo submodule and you're ready to start.
-```
-  cd Tools/simulation/gazebo-classic/sitl_gazebo-classic
-  git checkout -b RAPTOR origin/RAPTOR
-```
 
 # Run a simulation
 To run a simulation of our drone you'll need to run three terminals. But first you need to build the programs.
 ```bash
 cd /path/to/RAPTOR
-colcon build
+colcon build --packages-select raptor_interface gripper_control quad_control vicon
 . install/setup.bash
 ```
 
@@ -146,7 +135,7 @@ udp://:14540 is used to connect the mavsdk interface with the gazebo simulator.
 cd /path/to/RAPTOR
 source /opt/ros/humble/setup.bash
 . install/local_setup.bash
-ros2 run quad_interface mav_interface udp://:14540
+ros2 run quad_control quad_control udp://:14540
 ```
 
 ## Start reference generator
@@ -155,11 +144,11 @@ Open a terminal, source ROS2 and run the reference generator.
 cd /path/to/RAPTOR
 source /opt/ros/humble/setup.bash
 . install/local_setup.bash
-ros2 run quad_interface reference_generator
+ros2 run quad_control reference_generator
 ```
 
 In the gazebo environment you should now see the drone doing whatever you specified in the main function of the reference generator.
 You can find the file in
 ```bash
-cd /path/to/RAPTOR/src/raptor/src/quad_interface/src
+cd /path/to/RAPTOR/src/raptor/src/quad_control/src
 ```
