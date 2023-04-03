@@ -235,3 +235,5 @@ roslaunch svo_ros run_from_bag.launch cam_name:=svo_test_pinhole
 ```
 
 Then, run any given ROS2 node. If SVO subscribes to it (i.e. camera images), it will be bridged.
+
+If you want to change the camera topic in SVO, you need to change the launch files in ```svo_ros``` to the updated parameters. 
