@@ -152,3 +152,86 @@ You can find the file in
 ```bash
 cd /path/to/RAPTOR/src/raptor/src/quad_control/src
 ```
+
+# ROS2 Foxy
+
+Install ROS2 Foxy and ROS Noetic on your system. 
+
+## Clone repos
+
+Clone the repositories as previously mentioned and check out the RAPTOR-foxy branch in PX4-Autopilot:
+
+```
+RAPTOR
+|-  build/
+|-  install/
+|-  log/
+|-  src/
+    |-  PX4-Autopilot/
+    |-  raptor/
+```
+
+Build the raptor workspace with:
+
+```bash
+colcon build --cmake-args \
+    -DCMAKE_CXX_STANDARD=17 --packages-select raptor_interface gripper_control quad_control vicon
+```
+
+## New workspaces
+
+### ros1_bridge workspace
+
+Clone https://github.com/ros2/ros1_bridge and checkout the foxy branch:
+
+```bash
+git clone -b foxy https://github.com/ros2/ros1_bridge.git
+```
+
+Then, source ROS1 and ROS2 and build the bridge:
+
+```bash
+. /opt/ros/foxy/setup.sh && \
+. /opt/ros/noetic/setup.sh && \
+colcon build --symlink-install --cmake-force-configure
+```
+
+### SVO workspace
+
+Install the dependencies (https://github.com/raptor-ethz/rpg_svo_pro_open#install-dependences) and create the workspace:
+
+```bash 
+mkdir svo_ws && cd svo_ws
+# see below for the reason for specifying the eigen path
+catkin config --init --mkdirs --extend /opt/ros/<ROS-DISTRO> --cmake-args -DCMAKE_BUILD_TYPE=Release -DEIGEN3_INCLUDE_DIR=/usr/include/eigen3
+cd src
+git clone git@github.com:raptor-ethz/rpg_svo_pro_open.git
+vcs-import < ./rpg_svo_pro_open/dependencies.yaml
+touch minkindr/minkindr_python/CATKIN_IGNORE
+# vocabulary for place recognition
+cd rpg_svo_pro_open/svo_online_loopclosing/vocabularies && ./download_voc.sh
+cd ../../..
+```
+Then, proceed with any of the build options.
+
+## Putting it all together
+
+You need to have a ROS2 workspace with RAPTOR, the workspace with the bridge and with SVO/ROS Noetic. Source the workspaces with their respective ```install/setup.bash``` or ```devel/setup.bash```. 
+
+Launch a roscore.
+
+Then, in the bridge workspace:
+
+```bash
+# ros1_bridge workspace, replace ROS_MASTER with your URI from roscore
+export ROS_MASTER_URI=http://localhost:11311
+ros2 run ros1_bridge dynamic_bridge
+```
+
+In the SVO workspace (select the launch command you need, this is an example that will try to listen for the Realsense images):
+
+```bash
+roslaunch svo_ros run_from_bag.launch cam_name:=svo_test_pinhole
+```
+
+Then, run any given ROS2 node. If SVO subscribes to it (i.e. camera images), it will be bridged.
