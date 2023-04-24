@@ -237,3 +237,12 @@ roslaunch svo_ros run_from_bag.launch cam_name:=svo_test_pinhole
 Then, run any given ROS2 node. If SVO subscribes to it (i.e. camera images), it will be bridged.
 
 If you want to change the camera topic in SVO, you need to change the launch files in ```svo_ros``` to the updated parameters. 
+
+## Run SVO with the D455 Realsense
+Install the ROS 1 wrapper for Realsense.
+https://github.com/IntelRealSense/realsense-ros/tree/ros1-legacy
+
+To run the camera source ROS 1 and start the wrapper with:
+```bash
+roslaunch realsense2_camera rs_camera.launch enable_gyro:=true enable_accel:=true
+```
