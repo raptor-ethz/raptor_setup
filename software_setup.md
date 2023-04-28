@@ -3,7 +3,7 @@ Here, you will be able to find a guide on how to setup your installation of what
 
 # Installation Guide - Ubuntu
 
-The following instructions are written for Ubtuntu 22.04.1 LTS (jammy). Installation may differ for other versions, Linux distributions or operating systems.
+The following instructions are written for Ubtuntu 20.04.6 LTS (Focal Fossa). Installation may differ for other versions, Linux distributions or operating systems.
 
 __Make sure you have installed the [dependencies](#dependencies) first!__
 
@@ -17,15 +17,19 @@ The communication with the PX4 flight controller uses the [MAVLink](https://en.w
 
 ### Installation as debian Package
 
-- Download the latest [release](https://github.com/mavlink/MAVSDK/releases). (Version for 20.04 should work on 22.01)
+- Download the latest [release](https://github.com/mavlink/MAVSDK/releases). (Use Version for 20.04)
 - Install the downloaded debian package, e.g.
   ```bash
   sudo dpkg -i file.deb
   ```
 
-## ROS2
-We use ROS2 as our middleware. To install ROS2 Humble follow the tutorial: 
-https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+## ROS
+We use ROS as our middleware. 
+To install ROS2 Foxy follow the tutorial: 
+https://docs.ros.org/en/foxy/Installation.html
+
+To install ROS1 Noetic follow the tutorial:
+http://wiki.ros.org/noetic/Installation/Ubuntu
 
 
 
@@ -153,13 +157,9 @@ You can find the file in
 cd /path/to/RAPTOR/src/raptor/src/quad_control/src
 ```
 
-# ROS2 Foxy
-
-Install ROS2 Foxy and ROS Noetic on your system. 
-
 ## Clone repos
 
-Clone the repositories as previously mentioned and check out the RAPTOR-foxy branch in PX4-Autopilot:
+Clone the repositories as previously mentioned and check out the RAPTOR branch in PX4-Autopilot:
 
 ```
 RAPTOR
@@ -216,7 +216,7 @@ Then, proceed with any of the build options.
 
 ## Putting it all together
 
-You need to have a ROS2 workspace with RAPTOR, the workspace with the bridge and with SVO/ROS Noetic. Source the workspaces with their respective ```install/setup.bash``` or ```devel/setup.bash```. 
+You need to have a ROS2 workspace with RAPTOR and the workspace with the bridge and with SVO/ROS Noetic. Source the workspaces with their respective ```install/setup.bash``` or ```devel/setup.bash```. 
 
 Launch a roscore.
 
